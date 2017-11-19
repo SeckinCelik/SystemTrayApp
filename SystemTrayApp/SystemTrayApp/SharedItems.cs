@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SystemTrayApp
 {
-    class SharedItems
+    public class SharedItems
     {
         public class CopyItems
         {
