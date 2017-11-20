@@ -25,7 +25,7 @@ namespace SystemTrayApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("F:\\seckincelik\\Documents")]
         public string FilefolderPath {
             get {
                 return ((string)(this["FilefolderPath"]));
@@ -37,7 +37,7 @@ namespace SystemTrayApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("F:\\seckincelik\\Documents\\Log.json")]
         public string FilePath {
             get {
                 return ((string)(this["FilePath"]));

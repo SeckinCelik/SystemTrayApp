@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="FilefolderPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">F:\seckincelik\Documents</Value>
     </Setting>
     <Setting Name="FilePath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">F:\seckincelik\Documents\Log.json</Value>
     </Setting>
   </Settings>
 </SettingsFile>

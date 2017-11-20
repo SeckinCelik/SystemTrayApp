@@ -33,11 +33,11 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.copyItemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ıdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.keywordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.copyItemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.copyItemsBindingSource)).BeginInit();
@@ -76,10 +76,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(440, 432);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // copyItemsBindingSource
-            // 
-            this.copyItemsBindingSource.DataSource = typeof(SystemTrayApp.SharedItems.CopyItems);
+            this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
             // ıdDataGridViewTextBoxColumn
             // 
@@ -105,6 +102,10 @@
             this.keywordDataGridViewTextBoxColumn.HeaderText = "Keyword";
             this.keywordDataGridViewTextBoxColumn.Name = "keywordDataGridViewTextBoxColumn";
             // 
+            // copyItemsBindingSource
+            // 
+            this.copyItemsBindingSource.DataSource = typeof(SystemTrayApp.SharedItems.CopyItems);
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -113,6 +114,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmHome";
+            this.Load += new System.EventHandler(this.frmHome_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
