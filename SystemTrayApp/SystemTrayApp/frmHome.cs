@@ -51,5 +51,11 @@ namespace SystemTrayApp
 
             }
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            frmSettings frm = new frmSettings();
+            frm.ShowDialog();
+        }
     }
 }

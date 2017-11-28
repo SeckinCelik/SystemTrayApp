@@ -22,6 +22,19 @@ namespace SystemTrayApp
             txtId.Text = items.Id.ToString();
             txtKey.Text = items.Keyword;
             txtText.Text = items.Text;
+            dteTarih.Value = items.Date;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FileOperation.ReplaceKeyword(txtId.Text, txtKey.Text);
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FileOperation.DeleteByValue(txtId.Text);
+            this.Close();
         }
     }
 }

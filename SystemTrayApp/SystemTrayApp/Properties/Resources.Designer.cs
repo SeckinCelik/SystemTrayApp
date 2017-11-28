@@ -81,6 +81,16 @@ namespace SystemTrayApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap if_gnome_control_center_39213 {
+            get {
+                object obj = ResourceManager.GetObject("if_gnome_control_center_39213", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         public static System.Drawing.Icon SystemTrayApp {

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -55,11 +54,12 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.Image = global::SystemTrayApp.Properties.Resources.if_gnome_control_center_39213;
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(63, 22);
             this.btnRefresh.Text = "Button";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // dataGridView1
             // 
@@ -80,15 +80,19 @@
             // 
             // ıdDataGridViewTextBoxColumn
             // 
+            this.ıdDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.ıdDataGridViewTextBoxColumn.DataPropertyName = "Id";
             this.ıdDataGridViewTextBoxColumn.HeaderText = "Id";
             this.ıdDataGridViewTextBoxColumn.Name = "ıdDataGridViewTextBoxColumn";
+            this.ıdDataGridViewTextBoxColumn.Width = 41;
             // 
             // dateDataGridViewTextBoxColumn
             // 
+            this.dateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
             this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
             this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.Width = 55;
             // 
             // textDataGridViewTextBoxColumn
             // 
@@ -98,9 +102,11 @@
             // 
             // keywordDataGridViewTextBoxColumn
             // 
+            this.keywordDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.keywordDataGridViewTextBoxColumn.DataPropertyName = "Keyword";
             this.keywordDataGridViewTextBoxColumn.HeaderText = "Keyword";
             this.keywordDataGridViewTextBoxColumn.Name = "keywordDataGridViewTextBoxColumn";
+            this.keywordDataGridViewTextBoxColumn.Width = 73;
             // 
             // copyItemsBindingSource
             // 
