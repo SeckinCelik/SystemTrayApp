@@ -54,7 +54,7 @@
             this.btnRefresh});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(443, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(314, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -82,7 +82,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 25);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(443, 432);
+            this.dataGridView1.Size = new System.Drawing.Size(314, 432);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
@@ -140,7 +140,7 @@
             this.deleteSelectedToolStripMenuItem,
             this.openToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(155, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(155, 48);
             // 
             // deleteSelectedToolStripMenuItem
             // 
@@ -159,7 +159,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(443, 457);
+            this.ClientSize = new System.Drawing.Size(314, 457);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.toolStrip1);
