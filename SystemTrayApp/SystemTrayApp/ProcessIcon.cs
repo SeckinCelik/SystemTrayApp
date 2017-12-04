@@ -54,32 +54,13 @@ namespace SystemTrayApp
 
                 if (Clipboard.GetText().Length > 0)
                 {
-                    FileOperation fopx = new FileOperation();
-
-
                     SharedItems.CopyItems it = new SharedItems.CopyItems() { Text = Clipboard.GetText().Trim(), Date = DateTime.Now };
 
-                    if (!string.IsNullOrEmpty(it.Text))
+                    DBOperations operation = new DBOperations();
+
+                    if (operation.GetRecordByText(it.Text) == null)
                     {
-                        if (!copyList.Contains(it.Text))
-                        {
-                            copyList.Add(it.Text);
-
-                            var readFile = FileOperation.ReadFile();
-
-                            if (readFile != null && readFile.Count > 0)
-                            {
-                                FileOperation.WriteTofile(readFile.Union(new List<SharedItems.CopyItems>() 
-                                        {
-                                            new SharedItems.CopyItems{ Text=it.Text, Keyword = "", Date = DateTime.Now , Id=readFile.Max(y=>y.Id)+1} }).ToList(), false);
-                            }
-                            else
-                            {
-                                FileOperation.WriteTofile(new List<SharedItems.CopyItems>() 
-                                        {
-                                            new SharedItems.CopyItems{  Text=it.Text, Keyword = "", Date = DateTime.Now, Id=1 } });
-                            }
-                        }
+                        operation.insertRecord(it);
                     }
                 }
             }

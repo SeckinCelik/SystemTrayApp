@@ -25,13 +25,6 @@ namespace SystemTrayApp
             ToolStripMenuItem item;
             ToolStripSeparator sep;
 
-            // Windows Explorer.
-            //item = new ToolStripMenuItem();
-            //item.Text = "Explorer";
-            //item.Click += new EventHandler(Explorer_Click);
-            //item.Image = Resources.Explorer;
-            //menu.Items.Add(item);
-
             // About.
             item = new ToolStripMenuItem();
             item.Text = "About";
@@ -70,12 +63,8 @@ namespace SystemTrayApp
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         void About_Click(object sender, EventArgs e)
         {
-            if (!isAboutLoaded)
-            {
-                isAboutLoaded = true;
-                frmHome hisT = new frmHome();
-                hisT.ShowDialog();
-            }
+            frmHome hisT = new frmHome();
+            hisT.ShowDialog();
         }
 
         /// <summary>

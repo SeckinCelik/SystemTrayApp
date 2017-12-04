@@ -20,7 +20,7 @@ namespace SystemTrayApp
         {
             try
             {
-                dataGridView1.DataSource = FileOperation.ReadFile();
+                backgroundWorker1.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -34,17 +34,17 @@ namespace SystemTrayApp
             {
 
 
-                SharedItems.CopyItems sItems = new SharedItems.CopyItems()
-                {
-                    Date = ((SystemTrayApp.SharedItems.CopyItems)(((System.Windows.Forms.DataGridView)(sender)).CurrentRow.DataBoundItem)).Date,
-                    Id = ((SystemTrayApp.SharedItems.CopyItems)(((System.Windows.Forms.DataGridView)(sender)).CurrentRow.DataBoundItem)).Id,
-                    Keyword = ((SystemTrayApp.SharedItems.CopyItems)(((System.Windows.Forms.DataGridView)(sender)).CurrentRow.DataBoundItem)).Keyword,
-                    Text = ((SystemTrayApp.SharedItems.CopyItems)(((System.Windows.Forms.DataGridView)(sender)).CurrentRow.DataBoundItem)).Text
-                };
+                //SharedItems.CopyItems sItems = new SharedItems.CopyItems()
+                //{
+                //    Date = ((SystemTrayApp.SharedItems.CopyItems)(((System.Windows.Forms.DataGridView)(sender)).CurrentRow.DataBoundItem)).Date,
+                //    Id = ((SystemTrayApp.SharedItems.CopyItems)(((System.Windows.Forms.DataGridView)(sender)).CurrentRow.DataBoundItem)).Id,
+                //    Keyword = ((SystemTrayApp.SharedItems.CopyItems)(((System.Windows.Forms.DataGridView)(sender)).CurrentRow.DataBoundItem)).Keyword,
+                //    Text = ((SystemTrayApp.SharedItems.CopyItems)(((System.Windows.Forms.DataGridView)(sender)).CurrentRow.DataBoundItem)).Text
+                //};
 
-                frmTags frmTg = new frmTags();
-                frmTg.items = sItems;
-                frmTg.ShowDialog();
+                //frmTags frmTg = new frmTags();
+                //frmTg.items = sItems;
+                //frmTg.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -56,6 +56,57 @@ namespace SystemTrayApp
         {
             frmSettings frm = new frmSettings();
             frm.ShowDialog();
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                DBOperations db = new DBOperations();
+                backgroundWorker1.ReportProgress(40);
+                e.Result = db.getRecords().OrderByDescending(x => x.Date).ToList();
+                backgroundWorker1.ReportProgress(95);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                dataGridView1.DataSource = (List<SystemTrayApp.SharedItems.CopyItems>)e.Result;
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void deleteSelectedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DBOperations operaion = new DBOperations();
+                List<string> idList = new List<string>();
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    idList.Add(row.Cells[0].Value.ToString());
+                }
+
+                operaion.DeleteByIdList(idList);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }

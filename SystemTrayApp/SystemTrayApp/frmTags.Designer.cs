@@ -31,8 +31,8 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtKey = new System.Windows.Forms.TextBox();
-            this.txtText = new System.Windows.Forms.RichTextBox();
             this.dteTarih = new System.Windows.Forms.DateTimePicker();
+            this.txtText = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
@@ -68,6 +68,14 @@
             this.txtKey.Size = new System.Drawing.Size(190, 20);
             this.txtKey.TabIndex = 1;
             // 
+            // dteTarih
+            // 
+            this.dteTarih.Enabled = false;
+            this.dteTarih.Location = new System.Drawing.Point(3, 29);
+            this.dteTarih.Name = "dteTarih";
+            this.dteTarih.Size = new System.Drawing.Size(386, 20);
+            this.dteTarih.TabIndex = 3;
+            // 
             // txtText
             // 
             this.txtText.Enabled = false;
@@ -77,19 +85,11 @@
             this.txtText.TabIndex = 2;
             this.txtText.Text = "";
             // 
-            // dteTarih
-            // 
-            this.dteTarih.Enabled = false;
-            this.dteTarih.Location = new System.Drawing.Point(3, 29);
-            this.dteTarih.Name = "dteTarih";
-            this.dteTarih.Size = new System.Drawing.Size(386, 20);
-            this.dteTarih.TabIndex = 3;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(3, 221);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(190, 23);
+            this.button1.Size = new System.Drawing.Size(116, 23);
             this.button1.TabIndex = 4;
             this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = true;
@@ -97,9 +97,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(199, 221);
+            this.button2.Location = new System.Drawing.Point(125, 221);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(187, 23);
+            this.button2.Size = new System.Drawing.Size(121, 23);
             this.button2.TabIndex = 5;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
