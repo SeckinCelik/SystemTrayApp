@@ -61,31 +61,32 @@ namespace SystemTrayApp
             }
         }
 
-        public IEnumerable<SystemTrayApp.SharedItems.CopyItems> getRecords()
+        public List<SystemTrayApp.SharedItems.CopyItems> getRecords()
         {
-            //try
-            //{
-            List<SystemTrayApp.SharedItems.CopyItems> clsList = new List<SystemTrayApp.SharedItems.CopyItems>();
-
-            SQLiteCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "select * from KeyWord";
-            SQLiteDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
+            try
             {
-                SystemTrayApp.SharedItems.CopyItems cls = new SystemTrayApp.SharedItems.CopyItems();
-                cls.Date = Convert.ToDateTime(dr["DateOfRecord"]);
-                cls.Text = (string)dr["ClipBoardText"];
-                cls.Keyword = (string)dr["RemainderText"];
-                cls.Id = Convert.ToInt32(dr["id"]);
-                yield return cls;
-                //clsList.Add(cls);
+                List<SystemTrayApp.SharedItems.CopyItems> clsList = new List<SystemTrayApp.SharedItems.CopyItems>();
+
+                SQLiteCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "select * from KeyWord";
+                SQLiteDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    SystemTrayApp.SharedItems.CopyItems cls = new SystemTrayApp.SharedItems.CopyItems();
+                    cls.Date = Convert.ToDateTime(dr["DateOfRecord"]);
+                    cls.Text = (string)dr["ClipBoardText"];
+                    cls.Keyword = (string)dr["RemainderText"];
+                    cls.Id = Convert.ToInt32(dr["id"]);
+                    //yield return cls;
+                    clsList.Add(cls);
+                    Thread.Sleep(1000);
+                }
+                return clsList;
             }
-            //return clsList;
-            //}
-            //catch (Exception ex)
-            //{
-            //    yield return null;
-            //}
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
 

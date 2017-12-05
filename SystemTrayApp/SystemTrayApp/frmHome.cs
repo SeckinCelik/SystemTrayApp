@@ -15,12 +15,19 @@ namespace SystemTrayApp
         {
             InitializeComponent();
         }
+        public enum Operation
+        {
+            GetData,
+            DeleteData
+        }
 
         private void frmHome_Load(object sender, EventArgs e)
         {
             try
             {
-                backgroundWorker1.RunWorkerAsync();
+                userControl11.Visible = false;
+                if (!backgroundWorker1.IsBusy)
+                    backgroundWorker1.RunWorkerAsync(Operation.GetData);
             }
             catch (Exception ex)
             {
@@ -54,18 +61,39 @@ namespace SystemTrayApp
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            frmSettings frm = new frmSettings();
-            frm.ShowDialog();
+            if (!backgroundWorker1.IsBusy)
+            {
+                backgroundWorker1.RunWorkerAsync(Operation.GetData);
+            }
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
-                DBOperations db = new DBOperations();
-                backgroundWorker1.ReportProgress(40);
-                e.Result = db.getRecords().OrderByDescending(x => x.Date).ToList();
-                backgroundWorker1.ReportProgress(95);
+                MethodInvoker action = () => userControl11.Visible = true;
+
+                userControl11.BeginInvoke(action);
+
+                Operation op = (Operation)e.Argument;
+                if (op == Operation.DeleteData)
+                {
+                    DBOperations operaion = new DBOperations();
+                    List<string> idList = new List<string>();
+
+                    foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                    {
+                        operaion.DeleteById(Convert.ToInt32(row.Cells[0].Value.ToString()));
+                    }
+                }
+                else
+                {
+                    DBOperations db = new DBOperations();
+                    backgroundWorker1.ReportProgress(40);
+                    e.Result = db.getRecords().OrderByDescending(x => x.Date).ToList();
+                    backgroundWorker1.ReportProgress(95);
+                }
+
             }
             catch (Exception ex)
             {
@@ -75,14 +103,16 @@ namespace SystemTrayApp
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            progressBar1.Value = e.ProgressPercentage;
+            toolStripProgressBar1.Value = e.ProgressPercentage;
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             try
             {
-                dataGridView1.DataSource = (List<SystemTrayApp.SharedItems.CopyItems>)e.Result;
+                MethodInvoker action = () => userControl11.Visible = false;
+
+                userControl11.BeginInvoke(action); dataGridView1.DataSource = (List<SystemTrayApp.SharedItems.CopyItems>)e.Result;
             }
             catch (Exception ex)
             {
@@ -93,19 +123,11 @@ namespace SystemTrayApp
         {
             try
             {
-                DBOperations operaion = new DBOperations();
-                List<string> idList = new List<string>();
-                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-                {
-                    idList.Add(row.Cells[0].Value.ToString());
-                }
-
-                operaion.DeleteByIdList(idList);
+                if (!backgroundWorker1.IsBusy)
+                    backgroundWorker1.RunWorkerAsync(Operation.DeleteData);
             }
             catch (Exception ex)
             {
-
-                throw;
             }
         }
     }
