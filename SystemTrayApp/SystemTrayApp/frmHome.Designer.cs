@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,7 +57,8 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnRefresh,
-            this.toolStripProgressBar1});
+            this.toolStripProgressBar1,
+            this.toolStripSeparator1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(446, 25);
@@ -80,6 +83,11 @@
             this.toolStripProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.toolStripProgressBar1.Visible = false;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AutoGenerateColumns = false;
@@ -92,6 +100,7 @@
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.DataSource = this.copyItemsBindingSource1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(0, 25);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -157,9 +166,11 @@
             // 
             // userControl11
             // 
-            this.userControl11.Location = new System.Drawing.Point(0, 69);
+            this.userControl11.BackColor = System.Drawing.Color.Transparent;
+            this.userControl11.ForeColor = System.Drawing.Color.Transparent;
+            this.userControl11.Location = new System.Drawing.Point(0, 28);
             this.userControl11.Name = "userControl11";
-            this.userControl11.Size = new System.Drawing.Size(446, 388);
+            this.userControl11.Size = new System.Drawing.Size(446, 429);
             this.userControl11.TabIndex = 2;
             // 
             // frmHome
@@ -170,6 +181,9 @@
             this.Controls.Add(this.userControl11);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.toolStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmHome";
             this.Load += new System.EventHandler(this.frmHome_Load);
             this.toolStrip1.ResumeLayout(false);
@@ -204,6 +218,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.BindingSource copyItemsBindingSource1;
         private UserControl1 userControl11;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 

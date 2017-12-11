@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using SystemTrayApp.Properties;
 
@@ -13,7 +14,7 @@ namespace SystemTrayApp
         /// The NotifyIcon object.
         /// </summary>
         NotifyIcon ni;
-        Timer t;
+        System.Windows.Forms.Timer t;
         /// <summary>
         /// Initializes a new instance of the <see cref="ProcessIcon"/> class.
         /// </summary>
@@ -21,7 +22,7 @@ namespace SystemTrayApp
         {
             // Instantiate the NotifyIcon object.
             ni = new NotifyIcon();
-            t = new Timer();
+            t = new System.Windows.Forms.Timer();
         }
 
         /// <summary>
@@ -52,7 +53,7 @@ namespace SystemTrayApp
             {
                 int count = 0;
 
-                if (Clipboard.GetText().Length > 0)
+                if (Clipboard.GetText().Trim().Length > 0)
                 {
                     SharedItems.CopyItems it = new SharedItems.CopyItems() { Text = Clipboard.GetText().Trim(), Date = DateTime.Now };
 

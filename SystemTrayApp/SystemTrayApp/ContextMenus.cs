@@ -75,7 +75,15 @@ namespace SystemTrayApp
         void Exit_Click(object sender, EventArgs e)
         {
             // Quit without further ado.
-            Application.Exit();
+
+            var confirmResult = MessageBox.Show("Are you sure to close this application ??",
+                                                 "Confirm Quit!!",
+                                                 MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                Application.Exit();
+
+            }
         }
     }
 

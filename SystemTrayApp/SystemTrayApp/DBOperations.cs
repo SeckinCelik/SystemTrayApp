@@ -79,7 +79,7 @@ namespace SystemTrayApp
                     cls.Id = Convert.ToInt32(dr["id"]);
                     //yield return cls;
                     clsList.Add(cls);
-                    Thread.Sleep(1000);
+                    //Thread.Sleep(1000);
                 }
                 return clsList;
             }
@@ -155,6 +155,7 @@ namespace SystemTrayApp
             try
             {
                 SQLiteCommand cmd = conn.CreateCommand();
+                cmd.CommandTimeout = int.MaxValue;
                 cmd.CommandText = string.Format("Delete from KeyWord where id ={0}", id);
                 cmd.ExecuteNonQuery();
             }

@@ -76,6 +76,7 @@ namespace SystemTrayApp
                 userControl11.BeginInvoke(action);
 
                 Operation op = (Operation)e.Argument;
+
                 if (op == Operation.DeleteData)
                 {
                     DBOperations operaion = new DBOperations();
@@ -86,14 +87,11 @@ namespace SystemTrayApp
                         operaion.DeleteById(Convert.ToInt32(row.Cells[0].Value.ToString()));
                     }
                 }
-                else
-                {
-                    DBOperations db = new DBOperations();
-                    backgroundWorker1.ReportProgress(40);
-                    e.Result = db.getRecords().OrderByDescending(x => x.Date).ToList();
-                    backgroundWorker1.ReportProgress(95);
-                }
 
+                DBOperations db = new DBOperations();
+                backgroundWorker1.ReportProgress(40);
+                e.Result = db.getRecords().OrderByDescending(x => x.Date).ToList();
+                backgroundWorker1.ReportProgress(95);
             }
             catch (Exception ex)
             {
